@@ -190,7 +190,8 @@ class _HomePageState extends State<HomePage> {
                             color: Color(0xffffA8B2D1),
                             iconSize: 16.0,
                             onPressed: () {
-                              method.launchURL("https://github.com/meltro21");
+                              method
+                                  .launchURL("https://github.com/usamasabirr");
                             }),
                         /*IconButton(
                             icon: FaIcon(FontAwesomeIcons.twitter),
@@ -367,9 +368,9 @@ class _HomePageState extends State<HomePage> {
                                         projectDesc:
                                             "It is a user-friendly mobile app designed for buying and selling properties, providing a seamless platform for users to explore real estate listings and connect with potential buyers or sellers.",
                                         projectTitle: "Zeerac",
-                                        tech1: "Flutter",
-                                        tech2: "Dart",
-                                        tech3: "Flutter UI",
+                                        // tech1: "Flutter",
+                                        // tech2: "Dart",
+                                        // tech3: "Flutter UI",
                                       ),
                                       FeatureProject(
                                         imagePath:
@@ -381,9 +382,9 @@ class _HomePageState extends State<HomePage> {
                                         projectDesc:
                                             'Developed a Flutter-based mobile application for vehicle rental services.Implemented a user-friendly interface allowing users to easily navigate and access various features.Incorporated a secure user registration and login system to ensure data privacy and authentication.Integrated a comprehensive vehicle catalog, enabling users to browse and search for available rental options.Included a booking system that allows users to select preferred dates, times, and vehicle types for their rentals.',
                                         projectTitle: "Rent Wheel",
-                                        tech1: "Dart",
-                                        tech2: "Flutter",
-                                        tech3: "Firebase",
+                                        // tech1: "Dart",
+                                        // tech2: "Flutter",
+                                        // tech3: "Firebase",
                                       ),
 
                                       /*FeatureProject(
@@ -897,7 +898,7 @@ class _HomePageState extends State<HomePage> {
                                           Wrap(
                                             children: [
                                               Text(
-                                                "Although I'm currently looking for SDE-1 opportunities, my inbox is \nalways open. Whether you have a question or just want to say hi, I'll try my \nbest to get back to you!",
+                                                "My inbox is always open. Whether you have a question or just want to say hi, I'll try my \nbest to get back to you!",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Colors.white

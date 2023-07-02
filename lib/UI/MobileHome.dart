@@ -1,12 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:potrtfolio/Model/Method.dart';
+import 'package:potrtfolio/UI/mobile_project_detail.dart';
 import 'package:potrtfolio/Widget/CustomText.dart';
 import 'package:potrtfolio/Widget/MobileProject.dart';
 import 'package:potrtfolio/Widget/MobileWork.dart';
 
 import '../Widget/Workbox.dart';
+import '../common/custom_color.dart';
 
 class MobileHome extends StatefulWidget {
   @override
@@ -40,8 +43,10 @@ class _MobileHomeState extends State<MobileHome> {
   Widget build(BuildContext context) {
     Method method = Method();
     final Size size = MediaQuery.of(context).size;
+    var mediaHeight = MediaQuery.of(context).size.height;
+    var mediaWidth = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xff0A192F),
+      backgroundColor: CustomColor.greyColor,
       // endDrawer: Drawer(
       //     elevation: 6.0,
       //     child: Column(
@@ -100,7 +105,7 @@ class _MobileHomeState extends State<MobileHome> {
               CustomText(
                 text: "Usama Sabir.",
                 textsize: 52.0,
-                color: Color(0xffCCD6F6),
+                color: Colors.white,
                 fontWeight: FontWeight.w900,
               ),
               SizedBox(
@@ -196,14 +201,14 @@ class _MobileHomeState extends State<MobileHome> {
                             color: Color(0xffCCD6F6),
                             fontWeight: FontWeight.w700,
                           ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                          Container(
-                            width: size.width / 4,
-                            height: 1.10,
-                            color: Color(0xff303C55),
-                          ),
+                          // SizedBox(
+                          //   width: MediaQuery.of(context).size.width * 0.01,
+                          // ),
+                          // Container(
+                          //   width: size.width / 4,
+                          //   height: 1.10,
+                          //   color: Color(0xff303C55),
+                          // ),
                         ],
                       ),
 
@@ -231,8 +236,7 @@ class _MobileHomeState extends State<MobileHome> {
                             letterSpacing: 0.75,
                           ),
                           CustomText(
-                            text:
-                                "Here are a few technologies I've been working with recently:\n\n",
+                            text: "Here are a few technologies I've been working with recently:\n\n",
                             textsize: 16.0,
                             color: Color(0xff828DAA),
                             fontWeight: FontWeight.w500,
@@ -341,14 +345,14 @@ class _MobileHomeState extends State<MobileHome> {
                     color: Color(0xffCCD6F6),
                     fontWeight: FontWeight.w700,
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.01,
-                  ),
-                  Container(
-                    width: size.width * 0.08,
-                    height: 1.10,
-                    color: Color(0xff303C55),
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.01,
+                  // ),
+                  // Container(
+                  //   width: size.width * 0.08,
+                  //   height: 1.10,
+                  //   color: Color(0xff303C55),
+                  // ),
                 ],
               ),
 
@@ -357,7 +361,7 @@ class _MobileHomeState extends State<MobileHome> {
                 height: size.height * 0.07,
               ),
               Container(
-                height: size.height * 0.5,
+                height: size.height * 0.7,
                 child: WorkBox(),
               ),
 
@@ -380,18 +384,18 @@ class _MobileHomeState extends State<MobileHome> {
                   ),
                   CustomText(
                     text: "Some Things I've Built",
-                    textsize: 26.0,
+                    textsize: 24.0,
                     color: Color(0xffCCD6F6),
                     fontWeight: FontWeight.w700,
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.01,
-                  ),
-                  Container(
-                    width: size.width * 0.04,
-                    height: 1.10,
-                    color: Color(0xff303C55),
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.01,
+                  // ),
+                  // Container(
+                  //   width: size.width * 0.04,
+                  //   height: 1.10,
+                  //   color: Color(0xff303C55),
+                  // ),
                 ],
               ),
 
@@ -399,21 +403,100 @@ class _MobileHomeState extends State<MobileHome> {
                 height: size.height * 0.07,
               ),
 
-              MobileProject(
-                ontab: () {},
-                image: "images/pic9.jpg",
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MobileProjectDetail()));
+                },
+                child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                  AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Container(
+                      //height: mediaHeight * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                        image: DecorationImage(image: AssetImage('images/zeerac/1.png'), fit: BoxFit.contain),
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 10,
+                    margin: EdgeInsets.zero,
+                    child: Container(
+                      color: CustomColor.lightGreyColor,
+                      height: mediaHeight * 0.1,
+                      width: mediaWidth,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: CustomText(
+                          text: "Zeerac",
+                          textsize: 22.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
               ),
+              SizedBox(
+                height: size.height * 0.07,
+              ),
+
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MobileProjectDetail()));
+                },
+                child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                  AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Container(
+                      //height: mediaHeight * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                        image:
+                            DecorationImage(image: AssetImage('images/rentwheel/rentwheel.png'), fit: BoxFit.contain),
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 10,
+                    margin: EdgeInsets.zero,
+                    child: Container(
+                      color: CustomColor.lightGreyColor,
+                      height: mediaHeight * 0.1,
+                      width: mediaWidth,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: CustomText(
+                          text: "Rent Wheels",
+                          textsize: 22.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
+
+              // MobileProject(
+              //   ontab: () {},
+              //   image: "images/rentwheel/rentwheel.png",
+              // ),
 
               SizedBox(
                 height: size.height * 0.07,
               ),
 
-              MobileProject(
-                ontab: () {},
-                image: "images/pic2.jpg",
-              ),
+              // MobileProject(
+              //   ontab: () {},
+              //   image: "images/zeerac/1.png",
+              // ),
 
-              SizedBox(
+              //comment all the other projects
+              /*  SizedBox(
                 height: size.height * 0.07,
               ),
 
@@ -560,6 +643,7 @@ class _MobileHomeState extends State<MobileHome> {
               SizedBox(
                 height: size.height * 0.07,
               ),
+              
 
               Row(
                 children: [
@@ -699,7 +783,7 @@ class _MobileHomeState extends State<MobileHome> {
                     ),
                   ),
                 ],
-              ),
+              ),*/
 
               SizedBox(
                 height: size.height * 0.07,
@@ -737,7 +821,7 @@ class _MobileHomeState extends State<MobileHome> {
                         alignment: WrapAlignment.center,
                         children: [
                           Text(
-                            "Although I'm currently looking for SDE-1 opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+                            "My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.4),
@@ -797,7 +881,7 @@ class _MobileHomeState extends State<MobileHome> {
                       size: 15.0,
                     ),
                     onPressed: () {
-                      method.launchURL("https://github.com/champ96k");
+                      method.launchURL("https://github.com/usamasabirr");
                     },
                   ),
                   IconButton(
@@ -807,30 +891,29 @@ class _MobileHomeState extends State<MobileHome> {
                       size: 15.0,
                     ),
                     onPressed: () {
-                      method.launchURL(
-                          "https://www.linkedin.com/in/tushar-nikam-a29a97131/");
+                      method.launchURL("https://www.linkedin.com/in/usama-sabir-70405619b/");
                     },
                   ),
-                  IconButton(
-                    icon: Icon(
-                      FontAwesomeIcons.twitter,
-                      color: Colors.white,
-                      size: 15.0,
-                    ),
-                    onPressed: () {
-                      method.launchURL("https://twitter.com/champ_96k");
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.mail,
-                      color: Colors.white,
-                      size: 15.0,
-                    ),
-                    onPressed: () {
-                      method.launchEmail();
-                    },
-                  )
+                  // IconButton(
+                  //   icon: Icon(
+                  //     FontAwesomeIcons.twitter,
+                  //     color: Colors.white,
+                  //     size: 15.0,
+                  //   ),
+                  //   onPressed: () {
+                  //     method.launchURL("https://twitter.com/champ_96k");
+                  //   },
+                  // ),
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.mail,
+                  //     color: Colors.white,
+                  //     size: 15.0,
+                  //   ),
+                  //   onPressed: () {
+                  //     method.launchEmail();
+                  //   },
+                  // )
                 ],
               ),
 
@@ -845,7 +928,7 @@ class _MobileHomeState extends State<MobileHome> {
                 width: MediaQuery.of(context).size.width,
                 //color: Colors.white,
                 child: Text(
-                  "Designed & Built by Tushar Nikam 💙 Flutter",
+                  "Designed & Built by Usama Sabir 💙 Flutter",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.4),

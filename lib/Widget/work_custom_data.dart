@@ -7,11 +7,7 @@ class WorkCustomData extends StatelessWidget {
   final String image;
 
   const WorkCustomData(
-      {Key key,
-      @required this.title,
-      @required this.subTitle,
-      @required this.duration,
-      @required this.image})
+      {Key key, @required this.title, @required this.subTitle, @required this.duration, @required this.image})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -65,7 +61,8 @@ class WorkCustomData extends StatelessWidget {
               style: TextStyle(
                 fontSize: 13.0,
                 color: Color(0xffCCD6F6).withOpacity(0.5),
-                fontWeight: FontWeight.w600,
+
+                //fontWeight: FontWeight.w600,
               ),
             ),
             SizedBox(

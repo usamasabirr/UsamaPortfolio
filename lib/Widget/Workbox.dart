@@ -15,6 +15,9 @@ class WorkBox extends StatelessWidget {
           duration: "2022 - Present",
           image: 'images/beelogix.jpeg',
         ),
+        SizedBox(
+          height: 10,
+        ),
         WorkCustomData(
           title: "Fiverr",
           subTitle:
