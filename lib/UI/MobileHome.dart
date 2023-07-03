@@ -7,6 +7,7 @@ import 'package:potrtfolio/UI/mobile_project_detail.dart';
 import 'package:potrtfolio/Widget/CustomText.dart';
 import 'package:potrtfolio/Widget/MobileProject.dart';
 import 'package:potrtfolio/Widget/MobileWork.dart';
+import 'package:potrtfolio/common/project_data.dart';
 
 import '../Widget/Workbox.dart';
 import '../common/custom_color.dart';
@@ -402,84 +403,133 @@ class _MobileHomeState extends State<MobileHome> {
               SizedBox(
                 height: size.height * 0.07,
               ),
-
-              InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MobileProjectDetail()));
-                },
-                child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                  AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: Container(
-                      //height: mediaHeight * 0.3,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                        image: DecorationImage(image: AssetImage('images/zeerac/1.png'), fit: BoxFit.contain),
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10,
-                    margin: EdgeInsets.zero,
-                    child: Container(
-                      color: CustomColor.lightGreyColor,
-                      height: mediaHeight * 0.1,
-                      width: mediaWidth,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: CustomText(
-                          text: "Zeerac",
-                          textsize: 22.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
+              Column(
+                children: [
+                  for (int i = 0; i < 1; i++)
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MobileProjectDetail(
+                                      projectDetail: ProjectData.projectDetail[i],
+                                    )));
+                      },
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                        AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: Container(
+                            //height: mediaHeight * 0.3,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                              image: DecorationImage(
+                                  image: AssetImage(ProjectData.projectDetail[i].imageList[0].imagePath),
+                                  fit: BoxFit.contain),
+                              color: Colors.red,
+                            ),
+                          ),
                         ),
-                      ),
+                        Card(
+                          elevation: 10,
+                          margin: EdgeInsets.zero,
+                          child: Container(
+                            color: CustomColor.lightGreyColor,
+                            height: mediaHeight * 0.1,
+                            width: mediaWidth,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: CustomText(
+                                text: ProjectData.projectDetail[i].imageList[0].title,
+                                textsize: 22.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
                     ),
-                  ),
-                ]),
-              ),
-              SizedBox(
-                height: size.height * 0.07,
+                ],
               ),
 
-              InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MobileProjectDetail()));
-                },
-                child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                  AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: Container(
-                      //height: mediaHeight * 0.3,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                        image:
-                            DecorationImage(image: AssetImage('images/rentwheel/rentwheel.png'), fit: BoxFit.contain),
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10,
-                    margin: EdgeInsets.zero,
-                    child: Container(
-                      color: CustomColor.lightGreyColor,
-                      height: mediaHeight * 0.1,
-                      width: mediaWidth,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: CustomText(
-                          text: "Rent Wheels",
-                          textsize: 22.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-                ]),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context) => const MobileProjectDetail()));
+              //   },
+              //   child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+              //     AspectRatio(
+              //       aspectRatio: 16 / 9,
+              //       child: Container(
+              //         //height: mediaHeight * 0.3,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              //           image: DecorationImage(image: AssetImage('images/zeerac/1.png'), fit: BoxFit.contain),
+              //           color: Colors.red,
+              //         ),
+              //       ),
+              //     ),
+              //     Card(
+              //       elevation: 10,
+              //       margin: EdgeInsets.zero,
+              //       child: Container(
+              //         color: CustomColor.lightGreyColor,
+              //         height: mediaHeight * 0.1,
+              //         width: mediaWidth,
+              //         child: Align(
+              //           alignment: Alignment.center,
+              //           child: CustomText(
+              //             text: "Zeerac",
+              //             textsize: 22.0,
+              //             color: Colors.white,
+              //             fontWeight: FontWeight.w700,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ]),
+              // ),
+              // SizedBox(
+              //   height: size.height * 0.07,
+              // ),
+
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(context, MaterialPageRoute(builder: (context) => const MobileProjectDetail()));
+              //   },
+              //   child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+              //     AspectRatio(
+              //       aspectRatio: 16 / 9,
+              //       child: Container(
+              //         //height: mediaHeight * 0.3,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              //           image:
+              //               DecorationImage(image: AssetImage('images/rentwheel/rentwheel.png'), fit: BoxFit.contain),
+              //           color: Colors.red,
+              //         ),
+              //       ),
+              //     ),
+              //     Card(
+              //       elevation: 10,
+              //       margin: EdgeInsets.zero,
+              //       child: Container(
+              //         color: CustomColor.lightGreyColor,
+              //         height: mediaHeight * 0.1,
+              //         width: mediaWidth,
+              //         child: Align(
+              //           alignment: Alignment.center,
+              //           child: CustomText(
+              //             text: "Rent Wheels",
+              //             textsize: 22.0,
+              //             color: Colors.white,
+              //             fontWeight: FontWeight.w700,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ]),
+              // ),
 
               // MobileProject(
               //   ontab: () {},
