@@ -20,29 +20,108 @@ class MobileProjectDetail extends StatefulWidget {
 }
 
 class _MobileProjectDetailState extends State<MobileProjectDetail> {
+  //var _controller;
+  ProjectDetailModel projectDetail = ProjectData.projectDetail[0];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    // _controller = YoutubePlayerController.fromVideoId(
+    //   videoId:  projectDetail.youtubeId,
+    //   autoPlay: false,
+    //   params: const YoutubePlayerParams(showFullscreenButton: true),
+    // );
+    //});
+  }
+
   @override
   Widget build(BuildContext context) {
     var mediaHeight = MediaQuery.of(context).size.height;
     var mediaWidth = MediaQuery.of(context).size.width;
 
-    final _controller = YoutubePlayerController.fromVideoId(
-      videoId: widget.projectDetail.youtubeId,
-      autoPlay: false,
-      params: const YoutubePlayerParams(showFullscreenButton: true),
-    );
+    // final projectDetail = ModalRoute.of(context).settings.arguments as ProjectDetailModel;
+    // print('project detail is $projectDetail');
 
     return Scaffold(
       body: SafeArea(
         child: Container(
           color: CustomColor.greyColor,
           height: mediaHeight,
-          width: mediaWidth,
-          child: SingleChildScrollView(
+          // width: mediaWidth,
+          child: CarouselSlider.builder(
+            itemCount: projectDetail.imageList.length - 1,
+            itemBuilder: (context, index, realIndex) {
+              return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Container(
+                  height: mediaHeight * 0.6,
+                  //width: mediaWidth * 0.8,
+                  child: AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Container(
+                      margin: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        //color: Colors.red,
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                          fit: BoxFit.contain,
+                          image: AssetImage(projectDetail.imageList[index + 1].imagePath),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Text(
+                  projectDetail.imageList[index + 1].title,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  projectDetail.imageList[index + 1].featureSummary ?? ' ',
+                  style: GoogleFonts.robotoMono(color: CustomColor.extraLightGreyColor),
+                ),
+              ]);
+            },
+            options: CarouselOptions(
+              height: mediaHeight,
+              enlargeCenterPage: true,
+              autoPlay: false,
+              aspectRatio: 16 / 9,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: false,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              // viewportFraction: mediaWidth >= 320 && mediaWidth <= 425
+              //     ? 0.8
+              //     : mediaWidth >= 320
+              //         ? 0.8
+              //         : 0.5,
+            ),
+          ),
+
+          // Container(
+          //   height: mediaHeight * 0.5,
+          //   color: CustomColor.lightGreyColor,
+          //   //decoration: BoxDecoration(color: Color(0xff3D3769)),
+          //   width: mediaWidth * 0.8,
+          //   // height: mediaWidth * 0.8,
+          //   child: YoutubePlayer(
+          //     controller: _controller,
+          //     aspectRatio: 16 / 9,
+          //     // aspectRatio: 16 / 9,
+          //   ),
+          // ),
+
+          /* SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
+                    height: mediaHeight * 0.5,
                     color: CustomColor.lightGreyColor,
                     //decoration: BoxDecoration(color: Color(0xff3D3769)),
                     width: mediaWidth * 0.8,
@@ -60,7 +139,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                     margin: EdgeInsets.only(left: 10, right: 10),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       CustomText(
-                        text: widget.projectDetail.title,
+                        text:  projectDetail.title,
                         textsize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -75,7 +154,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                       //   color: Colors.grey,
                       // ),
                       Text(
-                        widget.projectDetail.summary,
+                         projectDetail.summary,
                         style: GoogleFonts.robotoMono(color: CustomColor.extraLightGreyColor),
                       )
                     ]),
@@ -84,7 +163,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                     height: 10,
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: EdgeInsets.only(left: 10, bottom: 20),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: CustomText(
@@ -96,7 +175,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                     ),
                   ),
                   CarouselSlider.builder(
-                    itemCount: widget.projectDetail.imageList.length - 1,
+                    itemCount:  projectDetail.imageList.length - 1,
                     itemBuilder: (context, index, realIndex) {
                       return Column(children: [
                         Expanded(
@@ -110,21 +189,21 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                                 borderRadius: BorderRadius.circular(10.0),
                                 image: DecorationImage(
                                   fit: BoxFit.contain,
-                                  image: AssetImage(widget.projectDetail.imageList[index + 1].imagePath),
+                                  image: AssetImage( projectDetail.imageList[index + 1].imagePath),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Text(
-                          widget.projectDetail.imageList[index + 1].title,
+                           projectDetail.imageList[index + 1].title,
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          widget.projectDetail.imageList[index + 1].featureSummary ?? ' ',
+                           projectDetail.imageList[index + 1].featureSummary ?? ' ',
                           style: GoogleFonts.robotoMono(color: CustomColor.extraLightGreyColor),
                         ),
                         SizedBox(
@@ -133,7 +212,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                       ]);
                     },
                     // items: [
-
+        
                     //   Column(children: [
                     //     Expanded(
                     //       child: AspectRatio(
@@ -156,7 +235,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                     //     )
                     //   ]),
                     // ],
-
+        
                     options: CarouselOptions(
                       height: mediaHeight * 0.8,
                       enlargeCenterPage: true,
@@ -174,6 +253,7 @@ class _MobileProjectDetailState extends State<MobileProjectDetail> {
                   ),
                 ]),
           ),
+             */
         ),
       ),
     );

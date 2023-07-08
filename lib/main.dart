@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Usama Sabir',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: MobileProjectDetail(),
     );
   }
 }

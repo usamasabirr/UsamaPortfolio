@@ -26,13 +26,13 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.5
   steps: ^1.0.1
   #url_launcher: ^5.5.0
   url_launcher: ^6.1.11
-  font_awesome_flutter: ^8.8.1
+  font_awesome_flutter: ^10.4.0
   scroll_to_index:
-  flutter_svg: ^1.0.2
+  flutter_svg: ^2.0.5
   carousel_slider: ^4.2.1
   google_fonts: ^4.0.1
   youtube_player_iframe: ^4.0.4
@@ -54,6 +54,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+    - assets/images/rentwheel/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
